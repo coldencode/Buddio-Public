@@ -5,7 +5,7 @@ import numpy as np
 import base64
 from deepface import DeepFace
 from sklearn.metrics.pairwise import cosine_similarity
-
+from preprocess_image import enhance_contrast
 def group_detection(users, photo_base64):
 
     # Decode base64 to bytes
@@ -33,9 +33,9 @@ def group_detection(users, photo_base64):
             face["facial_area"]["h"],
         )
         face_img = frame[y:y+h, x:x+w]
-
+        enhanced_face = enhance_contrast(face_img)
         # Generate embedding for the detected face
-        result = DeepFace.represent(face_img, model_name="Facenet")
+        result = DeepFace.represent(enhanced_face, model_name="Facenet")
         test_embedding = result[0]["embedding"]  # Ensure this is a list
 
         # Compare with all enrolled users
