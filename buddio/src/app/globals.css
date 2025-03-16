@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary-green: #4CAF50;
+  --light-green: #e8f5e9;
+  --lighter-green: #f1faf2;
+  --border-green: #81C784;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Custom styles for form elements */
+input {
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-green);
+}
+
+button {
+  transition: all 0.3s ease;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+/* Custom scrollbar for the members list */
+.members-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.members-list::-webkit-scrollbar-track {
+  background: var(--lighter-green);
+}
+
+.members-list::-webkit-scrollbar-thumb {
+  background: var(--border-green);
+  border-radius: 3px;
+}
